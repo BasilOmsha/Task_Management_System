@@ -52,5 +52,7 @@
     // Number of lines to keep in terminal history
     "terminal.integrated.persistentSessionScrollback": 1000,
     // Enable better integration with shell (command highlighting, etc)
-    "terminal.integrated.shellIntegration.enabled": true
+    "terminal.integrated.shellIntegration.enabled": true,
+    "appService.defaultWebAppToDeploy": "/subscriptions/f6f7c76e-644e-47e5-abf6-d0a45a745068/resourceGroups/management_system/providers/Microsoft.Web/sites/integrifyfullstackprojectbasel",
+    "appService.deploySubpath": "server\\PMS_Project\\PMS_Project.Presenter.API\\publish"
 }
