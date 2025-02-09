@@ -2,12 +2,11 @@
   "name": "frontend-project",
   "private": true,
   "version": "0.0.0",
-  
   "resolutions": {
-  "string-width": "4.2.3",
-  "strip-ansi": "6.0.1",
-  "wrap-ansi": "7.0.0"
-},
+    "string-width": "4.2.3",
+    "strip-ansi": "6.0.1",
+    "wrap-ansi": "7.0.0"
+  },
   "scripts": {
     "dev": "vite --port 3000",
     "build": "tsc && vite build",
@@ -15,7 +14,8 @@
     "type-check": "tsc --noEmit",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint --fix . --ext .ts,.tsx --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "deploy": "vercel --prod"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -48,6 +48,7 @@
     "@tanstack/react-table": "^8.20.6",
     "@types/jwt-decode": "^3.1.0",
     "@types/three": "^0.172.0",
+    "@vercel/analytics": "^1.4.1",
     "axios": "^1.4.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
