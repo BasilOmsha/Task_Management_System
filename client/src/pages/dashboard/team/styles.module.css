@@ -1,0 +1,12 @@
+.team-management {
+  @apply bg-gray-50 min-h-screen;
+}
+
+.team-management h1 {
+  @apply text-3xl font-bold text-gray-800;
+}
+
+.team-management .container {
+  @apply max-w-5xl;
+}
+

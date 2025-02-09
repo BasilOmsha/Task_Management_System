@@ -1,0 +1,33 @@
+/* login.module.css */
+.container {
+   @apply min-h-screen bg-background flex flex-col items-center justify-center p-4;
+}
+
+.formWrapper {
+   @apply w-full max-w-md space-y-8 bg-card p-8 rounded-lg shadow-lg;
+   /* @apply w-full max-w-2xl space-y-8 bg-card p-8 rounded-lg shadow-lg; */
+}
+
+.header {
+   @apply text-center space-y-2;
+}
+
+.title {
+   @apply text-3xl font-bold text-foreground;
+}
+
+.subtitle {
+   @apply text-muted-foreground;
+}
+
+.signupLink {
+   @apply text-center mt-6;
+}
+
+.signupText {
+   @apply text-muted-foreground;
+}
+
+.signupButton {
+   @apply text-primary hover:text-primary/90 font-medium ml-1;
+}

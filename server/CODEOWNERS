@@ -1,0 +1,20 @@
+# This is a comment
+# Each line is a file pattern followed by one or more owners
+
+# # Specify owners for all files
+# * @BasilOmsha @aidbar
+
+# # Specify owners for a specific branch
+# docs/* @BasilOmsha
+# src/* @aidbar 
+
+# # Specify owners for specific directories
+# /docs/  @docs-owner
+
+# # Specify owners for specific files
+# /scripts/deploy.sh @devops-owner
+
+# # Specify owners for files with specific extensions
+# *.js    @js-owner
+# *.css   @css-owner
+

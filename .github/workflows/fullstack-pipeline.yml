@@ -1,0 +1,94 @@
+name: Full Stack CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore ./PMS_Project/PMS_Project.Presenter.API/
+
+      - name: Build
+        run: dotnet build ./PMS_Project/PMS_Project.Presenter.API/ --no-restore --configuration Release
+
+      - name: Test
+        run: dotnet test ./PMS_Project/PMS_Project.Presenter.API/ --no-build --verbosity normal --configuration Release
+
+      - name: Publish
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
+        run: |
+          cd ./PMS_Project/PMS_Project.Presenter.API/
+          dotnet publish -c Release -o ./publish
+
+      - name: Deploy to Azure Web App
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: integrifyfullstackproject
+          package: ./server/PMS_Project/PMS_Project.Presenter.API/publish
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+          cache-dependency-path: './client/yarn.lock'
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Type Check
+        run: yarn type-check
+
+      - name: Run Linter
+        run: yarn lint:fix
+
+      - name: Build
+        run: yarn build
+        env:
+          CI: false
+          GENERATE_SOURCEMAP: false
+
+    # Uncomment and modify when ready to deploy frontend
+    # - name: Deploy Frontend
+    #   if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
+    #   # Add your frontend deployment step here
+    #   run: echo "Frontend deployment placeholder"

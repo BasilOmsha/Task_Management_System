@@ -1,0 +1,19 @@
+.container {
+    @apply min-h-screen bg-background flex flex-col items-center justify-center p-4;
+}
+
+.card {
+    @apply w-full max-w-md space-y-8 bg-card p-6 rounded-lg shadow-lg;
+}
+
+.header {
+    @apply text-center space-y-2;
+}
+
+.title {
+    @apply text-3xl font-bold text-foreground;
+}
+
+.subtitle {
+    @apply text-muted-foreground;
+}
