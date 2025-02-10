@@ -6,6 +6,7 @@
     - [Data flow](#data-flow)
     - [Lazy loading](#lazy-loading)
   - [Running the application](#running-the-application)
+  - [Environment variables](#environment-variables)
   - [What to expect](#what-to-expect)
   - [Improvements and future features](#improvements-and-future-features)
 
@@ -134,7 +135,18 @@ CD your-project-dir # moves to project directory
 yarn # downloads all the necessary packages
 
 yarn dev # Runs the app on localhost
-``` 
+```
+
+## Environment variables
+
+Below are the environment variables required for the application:
+
+| Environment Variable | Description                       |
+| -------------------- | --------------------------------- |
+| `VITE_API_URL_LOCAL` | http://localhost:5140/api/v1      |
+| `VITE_API_URL`       | http://yourdeployedbackend/api/v1 |
+
+
 ## What to expect
 - Ability to register and login
 - Create workspaces and view information about it
